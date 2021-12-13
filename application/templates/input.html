@@ -1,0 +1,24 @@
+{% extends 'layout.html' %}
+{% block body %}
+<div class='form'>
+    <form method='POST' action=''>
+        {{ form.hidden_tag() }}
+        {{ form.name.label }} {{ form.name }}
+        <br>
+        {{ form.author.label }} {{ form.author }}
+        <br>
+        Date     {{ Auto_date }}
+        <br>
+        Book status {{ Default_book_status }}
+        <br>
+        To be read by date {{ Default_target_date }}
+        <br>
+        {{ form.suggested_by.label }} {{form.suggested_by }}
+        <br>
+        {{ form.submit }}
+    {{ message }}
+    </form>
+
+
+</div>
+{% endblock body %}
