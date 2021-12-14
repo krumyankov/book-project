@@ -14,14 +14,14 @@ def add():
     message = ''
     form = BooksList()
     if request.method == 'POST':
-        bookname = form.name.data
+        bookname = form.book_name.data
         author = form.author.data
         addeddate = Auto_date
         bookstatus = Default_book_status
         targetdate = Default_target_date
         suggestedby = form.suggested_by.data
         if form.validate_on_submit():
-            newbook = Books(name=bookname, author=author, date_added=addeddate,status=bookstatus, date_target=targetdate,suggested_by=suggestedby)
+            newbook = Books(book_name=bookname, author=author, date_added=addeddate,book_status=bookstatus, date_target=targetdate,suggested_by=suggestedby)
             db.session.add(newbook)
             db.session.commit()
             message = 'The book has been added to the reading list'
@@ -37,21 +37,21 @@ def read():
     for book in books:
         formatted_date1 = str(book.date_added.day) + '/' + str(book.date_added.month) + '/' + str(book.date_added.year)
         formatted_date2 = str(book.date_target.day) + '/' + str(book.date_target.month) + '/' + str(book.date_target.year)
-        bookstring += '<br>' + str(book.id) + '*' + book.name + '*' + book.author + '*Status=' + str(book.status) + '*Date added: ' + formatted_date1 + '*To be read by date: ' + formatted_date2
+        bookstring += '<br>' + str(book.id) + '*' + book.book_name + '*' + book.author + '*Status=' + str(book.book_status) + '*Date added: ' + formatted_date1 + '*To be read by date: ' + formatted_date2
     return bookstring
 
 
-@app.route('/update/id=<int:id>/newstatus=<status>')
-def update(id,status):
+@app.route('/update/id=<int:id>/newstatus=<book_status>')
+def update(id,book_status):
     book = Books.query.get(id)
-    book.status = status
+    book.book_status = book_status
     db.session.commit()
     return 'Book status updated'
 
 
 @app.route('/delete/deletebook=<bookname>')
 def delete(bookname):
-    remove_book = Books.query.filter_by(name=bookname).first()
+    remove_book = Books.query.filter_by(book_name=bookname).first()
     db.session.delete(remove_book)
     db.session.commit()
     return 'Book has been removed from list'
