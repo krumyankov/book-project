@@ -8,5 +8,5 @@ CREATE TABLE IF NOT EXISTS books
                           date_target DATE NOT NULL,
                           suggested_by VARCHAR(50) NOT NULL,
                           PRIMARY KEY (id),
-                          UNIQUE (email)
+                          UNIQUE (book_name)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
