@@ -3,12 +3,12 @@ pipeline{
         stages{
             stage('Make Directory'){
                 steps{
-                    sh "mkdir ~/books-test"
+                    sh "mkdir ~home/azureuser/books-test"
                 }
             }
             stage('Make File'){
                 steps{
-                    sh "touch ~/books-test2/file1"
+                    sh "touch ~home/azureuser/books-test2/file1"
                 }
             }
         }
