@@ -3,7 +3,7 @@ pipeline{
         stages{
             stage('Run command'){
                 steps{
-                    sh "docker stack deploy --compose-file docker-compose.yaml books"
+                    sh "docker-compose up"
                 }
             }
             
