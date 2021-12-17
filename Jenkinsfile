@@ -1,15 +1,11 @@
 pipeline{
         agent any
         stages{
-            stage('Make Directory'){
+            stage('Run command'){
                 steps{
-                    sh "mkdir ~home/azureuzer/books-test"
+                    sh "docker stack deploy --compose-file docker-compose.yaml books"
                 }
             }
-            stage('Make File'){
-                steps{
-                    sh "touch ~home/azureuser/books-test/file1"
-                }
-            }
+            
         }
 }
