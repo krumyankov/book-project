@@ -6,9 +6,9 @@ pipeline{
                     sh "mkdir ~/books-test"
                 }
             }
-            stage('Make Files'){
+            stage('Make Directory 1'){
                 steps{
-                    sh "docker stack deploy --compose-file docker-compose.yaml books"
+                    sh "mkdir ~/books-test2"
                 }
             }
         }
