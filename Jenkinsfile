@@ -6,9 +6,9 @@ pipeline{
                     sh "mkdir ~/books-test"
                 }
             }
-            stage('Make Directory 1'){
+            stage('Make File'){
                 steps{
-                    sh "mkdir ~/books-test2"
+                    sh "touch ~/books-test2/file1"
                 }
             }
         }
